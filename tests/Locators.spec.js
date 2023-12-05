@@ -13,8 +13,16 @@ test('Locators', async ({page})=>{
     //enter password
     await page.type("input[id='loginpassword']", 'test@123')
 
-    //click on login
+    //click on login button
+    await page.click("//button[normalize-space()='Log in']")
+
+    //assert log out button is visible
+    const logoutLink = await page.locator("(//a[normalize-space()='Log out'])[1]")
+    await expect(logoutLink).toBeVisible();
     
+    await page.close()
+    
+
 
 
 
